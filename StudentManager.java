@@ -47,4 +47,15 @@ public class StudentManager {
             System.out.println(r.toString());
         }
     }
+
+    public void loadData(){
+    list = Serialize.deserialize();
+        if (list != null){
+
+        }
+    }
+
+    public void saveData(){
+        Serialize.serialize(list);
+    }
 }

@@ -14,14 +14,15 @@ public class StudentManagement {
         Scanner input = new Scanner(System.in);
 
         String choice = "y";
-
+        admin.loadData();
         while (true) {
             System.out.println("What would you like to do today? \n" +
                     "1.Create a student record \n" +
                     "2.See a student record \n" +
                     "3.Update a student record \n" +
                     "4.Delete a student record \n" +
-                    "5.Display all Student Records");
+                    "5.Display all Student Records\n" +
+                    "6.Quit");
             int task = input.nextInt();
             if (task == 1) {
                 while (choice.equals("y")) {
@@ -64,6 +65,9 @@ public class StudentManagement {
                 admin.delete(id);
             } else if (task == 5) {
                 admin.display();
+            } else if (task == 6) {
+                admin.saveData();
+                break;
             }
         }
     }

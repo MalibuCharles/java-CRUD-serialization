@@ -27,4 +27,36 @@ public class Serialize {
         }
 
     }
+
+    public static LinkedList <StudentRecord>  deserialize(){
+// we need to read from the file object.ser the data for our employee
+// and if possible create a new employee otherwise return null
+
+        LinkedList <StudentRecord> students = null; // this create an object of type employee to receive data from file or return
+
+        try {
+            // read object from a file
+            FileInputStream file = new FileInputStream("studentRecords.ser");
+            // create a connect to a file
+            ObjectInputStream in = new ObjectInputStream(file);
+
+            // method for deserialization for an object
+            students = (LinkedList<StudentRecord>) in.readObject();
+            // ^ read object and convert data to type Employee
+
+            in.close();
+            file.close();
+
+            System.out.println("Object has been deserialized");
+            System.out.println(students.size());
+
+        } catch (IOException i){
+            i.printStackTrace();
+
+        }catch (ClassNotFoundException c){
+            c.printStackTrace();
+        }return students;
+    }
+
+
 }
